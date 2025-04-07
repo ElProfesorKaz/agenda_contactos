@@ -25,12 +25,14 @@ def main():
             # Agregar contacto
             nombre = input("Ingrese el nombre: ")
             telefono = input("Ingrese el teléfono: ")
-            email = input("Ingrese el correo electrónico: ")
-            
-            if not validar_email(email):
-                print("Correo electrónico inválido. Debe contener un '@'.")
-                continue
-            
+            email = ""
+            while not validar_email(email):
+                # Validar el correo electrónico
+                email = input("Ingrese el correo electrónico: ")
+                
+                if not validar_email(email):
+                    print("Correo electrónico inválido. Debe contener un '@'. Intente nuevamente.")
+                    
             contacto = Contacto(nombre, telefono, email)
             gestion.agregar_contacto(contacto)
             print("Contacto agregado exitosamente.")
